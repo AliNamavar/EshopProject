@@ -1,0 +1,114 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+
+{% block title %}
+    products list
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row g-0">
+
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items"><!--features_items-->
+                        <h2 class="title text-center">محصولات </h2>
+                        {% for product in  products %}
+                            {% include 'includes/product_item_in.html' with product=product %}
+                        {% endfor %}
+
+                        <ul class="pagination">
+
+                            {% if page_obj.has_previous %}
+                                <li><a class="cursor-pointer" onclick="fillpage({{ page_obj.previous_page_number }})">
+                                    قبلی </a></li>
+
+                            {% endif %}
+                            {% for page_number in paginator.page_range %}
+                                <li class="{% if page_obj.number == page_number %} active {% endif %}"><a
+                                        class="cursor-pointer"
+                                        onclick="fillpage({{ page_number }})"> {{ page_number }}</a></li>
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li><a class="cursor-pointer" onclick="fillpage({{ page_obj.next_page_number }})">
+                                    بعدی </a></li>
+                            {% endif %}
+                        </ul>
+                        {#                        <ul class="pagination">#}
+                        {##}
+                        {#                            {% if page_obj.has_previous %}#}
+                        {#                                <li>#}
+                        {#                                    <a href="?page=#}
+                        {#                                            {{ page_obj.previous_page_number }}{% if request.GET.start_price %}&start_price={{ request.GET.start_price }}{% endif %}{% if request.GET.end_price %}&end_price={{ request.GET.end_price }}{% endif %}">#}
+                        {#                                        قبلی#}
+                        {#                                    </a>#}
+                        {#                                </li>#}
+                        {#                            {% endif %}#}
+                        {##}
+                        {#                            {% for page_number in paginator.page_range %}#}
+                        {#                                <li class="{% if page_obj.number == page_number %} active {% endif %}">#}
+                        {#                                    <a href="?page=#}
+                        {#                                            {{ page_number }}{% if request.GET.start_price %}&start_price={{ request.GET.start_price }}{% endif %}{% if request.GET.end_price %}&end_price={{ request.GET.end_price }}{% endif %}">#}
+                        {#                                        {{ page_number }}#}
+                        {#                                    </a>#}
+                        {#                                </li>#}
+                        {#                            {% endfor %}#}
+                        {##}
+                        {#                            {% if page_obj.has_next %}#}
+                        {#                                <li>#}
+                        {#                                    <a href="?page=#}
+                        {#                                            {{ page_obj.next_page_number }}{% if request.GET.start_price %}&start_price={{ request.GET.start_price }}{% endif %}{% if request.GET.end_price %}&end_price={{ request.GET.end_price }}{% endif %}">#}
+                        {#                                        بعدی#}
+                        {#                                    </a>#}
+                        {#                                </li>#}
+                        {#                            {% endif %}#}
+                        {##}
+                        {#                        </ul>#}
+
+                    </div><!--features_items-->
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>دسته بندی محصولات</h2>
+
+                        {% render_partial 'product_module.views.products_category_component' %}
+                        {% render_partial 'product_module.views.product_brand_component' %}
+
+                        <div class="price-range">
+                            <h2>فیلتـر قیمـت</h2>
+                            <div class="well">
+                                <input type="text"
+                                       class="span2"
+                                       value="{{ start_price }}, {{ end_price }}"
+                                       data-slider-min="0"
+                                       data-slider-max="{{ db_max_price }}"
+                                       data-slider-step="1000"
+                                       data-slider-value="[{{ start_price }},{{ end_price }}]"
+                                       id="sl2"><br/>
+                                <b>{{ end_price }} تومن</b> <b class="pull-left"> 0 تومن</b>
+                            </div>
+                        </div><!--/price-range-->
+                        <div>
+                            <form action="" method="get" id="filter_form">
+                                <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+                                <input type="hidden" name="start_price" id="start_price" value="{{ start_price }}">
+                                <input type="hidden" name="end_price" id="end_price" value="{{ end_price }}">
+                            </form>
+                        </div>
+                        <button class="btn btn-success btn-block" onclick="filterProduct()">اعمال فیلتر</button>
+
+                        <div class="shipping text-center"><!--shipping-->
+                            {% for banner in banners %}
+                                <a href="{{ banner.url_title }}"><img src="{{ banner.image.url }}" alt=""style="width: 100%"></a>                                
+                            {% endfor %}
+                        </div><!--/shipping-->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

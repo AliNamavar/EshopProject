@@ -1,0 +1,31 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+{% block title %}
+    user | EditProfile
+{% endblock %}
+
+{% block content %}
+    <div id="edit-profile-section" class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {% if correct_user.avatar %}
+                    {% thumbnail correct_user.avatar "121x90" crop='center' quality=100 as im %}
+                        <a class="thumbnail">
+                            <img style="width: 50%" src="{{ im.url }}" alt="">
+                        </a>
+                    {% endthumbnail %}
+                {% endif %}
+                {% render_partial 'user_panel_module.views.user_panel_menu_component' %}
+            </div>
+            <div class="col-md-8">{# enctype="multipart/form-data" age to form file essal mikony ino bayad bezary #}
+                <form enctype="multipart/form-data" action="{% url 'edit-profile' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">ذخیره</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

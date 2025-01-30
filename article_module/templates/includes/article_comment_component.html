@@ -1,0 +1,58 @@
+{% load poll_extras %}
+{% load thumbnail %}
+<div class="response-area" id="comment">
+    <h2> نظرات ({{ comments_count }})</h2>
+    <ul class="media-list">
+        {% for comments in comment %}
+            <li class="media " id="single_comment_box_{{ comments.id }}">
+                <a class="pull-right" href="#">
+                    {% if comments.author.avatar %}
+                        {% thumbnail comments.author.avatar "121x86" quality=95 crop="center" as im %}
+                            <img class="media-object" src="{{ im.url }}" alt="">
+                        {% endthumbnail %}
+
+                    {% else %}
+                        <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                    {% endif %}
+                </a>
+                <div class="media-body">
+                    <ul class="sinlge-post-meta">
+                        <li><i class="fa fa-user"></i>{{ comments.author }}</li>
+                        <li><i class="fa fa-clock-o"></i> {{ comments.created_date | time }} </li>
+                        <li><i class="fa fa-calendar"></i>{{ comments.created_date | create_date }}
+                        </li>
+                    </ul>
+                    <p>{{ comments.text }}</p>
+                    <a class="btn btn-primary" onclick="fillpatternid({{ comments.id }})"><i
+                            class="fa fa-reply"></i>پاسـخ</a>
+                </div>
+            </li>
+
+            {% for answers in comments.articlecomments_set.all %}
+                <li class="media second-media" id="single_comment_box_{{ comment.id }}">
+                    <a class="pull-right" href="#">
+                        {% if answers.author.avatar %}
+                            {% thumbnail answers.author.avatar "121x86" quality=95 crop="center" as im %}
+                        <img class="media-object" src="{{ im.url }}" alt="">
+                            {% endthumbnail %}
+                            {% else %}
+                        <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+
+                        {% endif %}
+                    </a>
+                    <div class="media-body">
+                        <ul class="sinlge-post-meta">
+                            <li><i class="fa fa-user"></i>{{ answers.author }}</li>
+                            <li><i class="fa fa-clock-o"></i> {{ answers.created_date | time }}
+                            </li>
+                            <li>
+                                <i class="fa fa-calendar"></i>{{ answers.created_date | create_date }}
+                            </li>
+                        </ul>
+                        <p>{{ answers.text }}</p>
+
+                    </div>
+                </li>
+                
+            {% endfor %}
+        {% endfor %}

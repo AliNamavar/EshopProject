@@ -1,0 +1,23 @@
+{% if request.resolver_match.url_name == 'user-dashboard' %}{# user-dashboard #}
+
+    <li class="list-group-item ">
+        <a href="{% url 'edit-profile' %}">ویرایش اطلاعات</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'change-password' %}">تغییر کلمه ی عبور</a>
+    </li>
+
+{% else %}
+
+    <li class="list-group-item">
+        <a href="{% url 'user-dashboard' %}">پنل کاربری</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'edit-profile' %}">ویرایش اطلاعات</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'change-password' %}">تغییر کلمه ی عبور</a>
+    </li>
+
+
+{% endif %}

@@ -1,0 +1,89 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+{% load poll_extras %}
+
+{% block title %}
+    لیست مقالات
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-9">
+                    <div class="blog-post-area">
+                        <h2 class="title text-center">آخریـن اخبـار</h2>
+                        {% for article in page_obj %}
+                            <div class="single-blog-post">
+                                <h3>{{ article.title }}</h3>
+                                <div class="post-meta">
+                                    <ul>
+                                        {% if article.author is not None %}
+                                            <li><i class="fa fa-user"></i> {{ article.author }} </li>
+                                        {% else %}
+                                            <li><i class="fa fa-user"></i> کاربـر 1</li>
+
+                                        {% endif %}
+                                        <li><i class="fa fa-clock-o"></i>{{ article.get_date_created_time }}</li>
+                                        <li><i class="fa fa-calendar"></i>{{ article.created_date | create_date }}</li>
+                                    </ul>
+                                    <span>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-half-o"></i>
+								</span>
+                                </div>
+                                <a href="">
+                                    {% if article.image %}
+                                        {% thumbnail article.image "862x398" quality=100 crop="center" as im %}
+                                            <img src="{{ im.url }}" alt="">
+                                        {% endthumbnail %}
+                                    {% else %}
+                                        <img src="/static/images/blog/blog-one.jpg" alt="">
+                                    {% endif %}
+                                </a>
+                                <p> {{ article.short_description }}</p>
+                                <a class="btn btn-primary" href="{% url 'article_detail' pk=article.id %}"> مشاهده </a>
+                            </div>
+                        {% endfor %}
+                        <ul class="pagination">
+
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+
+                            {% endif %}
+                            {% for page_number in paginator.page_range %}
+                                <li class="{% if page_obj.number == page_number %} active {% endif %}"><a
+                                        href="?page={{ page_number }}">{{ page_number }}</a></li>
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+
+
+                        {% render_partial 'article_module.views.article_category_component' %}
+
+
+                        <div class="shipping text-center"><!--shipping-->
+                            <img src="/static/images/home/shipping.jpg" alt="">
+                        </div><!--/shipping-->
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

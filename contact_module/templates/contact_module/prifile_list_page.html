@@ -1,0 +1,25 @@
+{% extends 'shared/layout.html' %}
+{% load static %}
+{% block title %}
+	profile detail
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                    {% for profile in profiles %}
+                    	<li>
+{#                            <img src="{% static 'images/Screenshot_48.png' %}" alt="" width="150">#}
+                        <img src="media/{{ profile.image }}" alt="" width="400">
+{#                        <img src="{{ profile.image.url }}" alt="" width="400">#}
+
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

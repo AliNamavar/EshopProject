@@ -1,0 +1,130 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+    contact-us
+{% endblock %}
+
+{% block content %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">با ما در ارتباط باشیـد</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post"
+                              action="{% url 'contact_us_view' %}">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="col-md-12 form-group">
+
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+
+                                </div>
+                            {% endfor %}
+                            <hr>
+
+                            {#                            <div class="col-md-6 form-group">#}
+                            {##}
+                            {#                                {{ contact_form.email.label_tag }}#}
+                            {#                                {{ contact_form.email }}#}
+                            {#                                {{ contact_form.email.errors }}#}
+                            {##}
+                            {#                            </div>#}
+                            {#                            <div class="col-md-6 form-group">#}
+                            {##}
+                            {#                                {{ contact_form.full_name.label_tag }}#}
+                            {#                                {{ contact_form.full_name }}#}
+                            {#                                {{ contact_form.full_name.errors }}#}
+                            {##}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="col-md-12 form-group">#}
+                            {##}
+                            {#                                {{ contact_form.subject.label_tag }}#}
+                            {#                                {{ contact_form.subject }}#}
+                            {#                                {{ contact_form.subject.errors }}#}
+                            {##}
+                            {#                            </div>#}
+                            {#                            <div class="col-md-12 form-group">#}
+                            {##}
+                            {#                                {{ contact_form.text.label_tag }}#}
+                            {#                                {{ contact_form.text }}#}
+                            {#                                {{ contact_form.text.errors }}#}
+                            {##}
+                            {#                            </div>#}
+
+
+                            {#                            <div class="form-group col-md-6">#}
+                            {#                                <input type="text" name="name" class="form-control" required="required"#}
+                            {#                                       placeholder="نام">#}
+
+                            {#                            </div>#}
+                            {#                            <div class="form-group col-md-6">#}
+                            {#                                <input type="email" name="email" class="form-control" required="required"#}
+                            {#                                       placeholder="ایمیـل">#}
+                            {#                            </div>#}
+                            {#                            <div class="form-group col-md-12">#}
+                            {#                                <input type="text" name="subject" class="form-control" required="required"#}
+                            {#                                       placeholder="موضـوع">#}
+                            {#                            </div>#}
+                            {#                            <div class="form-group col-md-12">#}
+                            {#                                                                <textarea name="message" id="message" required=""#}
+                            {#                                                                          class="form-control" rows="8"#}
+                            {#                                                                          placeholder="پیغـام شمـا"></textarea>#}
+                            {#                            </div>#}
+                            <div class="form-group col-md-12">
+                                {#                                <input type="submit" name="submit" class="btn btn-primary pull-right" value="ارسـال">#}
+                                <button type="submit" class="btn btn-primary pull-right">ارسال</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <h2 class="title text-center">اطلاعات تماس</h2>
+                        <address>
+                            <p> {{ site_settings.name }}</p>
+                            <p>{{ site_settings.address }}</p>
+                            <p></p>
+                            <p>تلفن تماس :{{ site_settings.phone_number }}</p>
+                            {% if site_settings.fax_number %}
+                                <p>فکس : {{ site_settings.fax_number }}</p>
+                            {% endif %}
+                            {% if site_settings.email %}
+                                <p style="font-family: tahoma;">ایمیـل : {{ site_settings.email }}</p>
+                            {% endif %}
+                        </address>
+                        <div class="social-networks">
+                            <h2 class="title text-center">شبکـه های اجتـماعی</h2>
+                            <span class="socials-share share">
+									<ul>
+										<a href="#">
+											<li>
+												<label>بلـه</label>
+												<img src="/static/images/product-details/Bale.png">
+											</li>
+										</a>
+										<a href="#">
+											<li>
+												<label>سـروش</label>
+												<img src="/static/images/product-details/Soroush.png">
+											</li>
+										</a>
+										<a href="#">
+											<li>
+												<label>اینستاگرام</label>
+												<img src="/static/images/product-details/Instagram.png">
+											</li>
+										</a>
+									</ul>
+								</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

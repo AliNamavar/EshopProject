@@ -1,0 +1,13 @@
+{% extends 'shared/layout.html' %}
+{% load poll_extras %}
+{% block title %}
+    سبد خرید شما
+{% endblock %}
+
+{% block content %}
+    <div id="allOrderAjaxs">
+    {% include 'order_partials/order_rm_partials.html' %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,174 @@
+{#{% load poll_extras %}#}
+{#<section id="cart_items">#}
+{#    <div class="container">#}
+{#        <div class="breadcrumbs">#}
+{#            <ol class="breadcrumb">#}
+{#                <li><a href="#">خانـه</a></li>#}
+{#                <li class="active">پرداخت</li>#}
+{#            </ol>#}
+{#        </div><!--/breadcrums-->#}
+{#        <div class="table-responsive cart_info">#}
+{#            <table class="table table-condensed">#}
+{#                <thead>#}
+{#                <tr class="cart_menu">#}
+{#                    <td class="image">کـالا</td>#}
+{#                    <td class="description"></td>#}
+{#                    <td class="price">قیمت</td>#}
+{#                    <td class="quantity">تعـداد</td>#}
+{#                    <td class="total">مجمـوع</td>#}
+{#                    <td></td>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                {% if Order.Order_detail_set.all %}#}
+{#                    <tbody>#}
+{#                    {% for productSet in Order.order_detail_set.all %}#}
+{#                        <tr>#}
+{#                            <td class="cart_product">#}
+{#                                <a href=""><img class="image-cart-detail" src="{{ productSet.product.images.url }}"#}
+{#                                                alt=""></a>#}
+{#                            </td>#}
+{#                            <td class="cart_description">#}
+{#                                <h4><a href="">{{ productSet.product.title }}</a></h4>#}
+{#                            </td>#}
+{#                            <td class="cart_price">#}
+{#                                <p>{{ productSet.product.price | three_digits_currency }} </p>#}
+{#                            </td>#}
+{#                            <td class="cart_quantity">#}
+{#                                <div class="cart_quantity_button">#}
+{#                                    <a class="cart_quantity_up"#}
+{#                                       onclick="editordercount({{ productSet.id }}, 'up', event)" href=""> + </a>#}
+                                    {#                                        <input class="cart_quantity_input" type="text" name="quantity"#}
+                                    {#                                               value="{{ productSet.count }}" autocomplete="off" size="2">#}
+{#                                    <input class="cart_quantity_input" type="text" name="quantity"#}
+{#                                           value="{{ productSet.count }}" autocomplete="off" size="2"#}
+{#                                           readonly onkeydown="return false;">#}
+{##}
+{#                                    <a class="cart_quantity_down"#}
+{#                                       onclick="editordercount({{ productSet.id }}, 'Down', event)" href=""> - </a>#}
+{#                                </div>#}
+{#                            </td>#}
+{#                            <td class="cart_total">#}
+{#                                <p class="cart_total_price">{% multiply productSet.count productSet.product.price %}</p>#}
+{#                            </td>#}
+{#                            <td class="cart_delete"><a class="cart_quantity_delete"#}
+{#                                                       onclick="removeProductAsOrder(event, {{ productSet.product.id }})"#}
+{#                                                       href=""><i class="fa fa-times"></i></a></td>#}
+{#                        </tr>#}
+{##}
+{#                    {% endfor %}#}
+{##}
+{##}
+{#                    </tbody>#}
+{##}
+{##}
+{#                    </table>#}
+{#                    </div>#}
+{#                    </div>#}
+{#                    </section> <!--/#cart_items-->#}
+{##}
+{#                    <section id="do_action">#}
+{#                        <div class="container">#}
+{#                            <div class="row">#}
+{#                                <div class="col-sm-6">#}
+{#                                    <div class="total_area">#}
+{#                                        <ul>#}
+{#                                            <li>مجمـوع <span>{{ total_price | three_digits_currency }}</span></li>#}
+{#                                        </ul>#}
+{#                                        <a class="btn btn-default check_out" href="checkout.html">پرداخت</a>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                    </section><!--/#do_action-->#}
+{#                    {% else %}#}
+{#                        <p>سبد خرید شما خالی است!</p>#}
+{#                {% endif %}#}
+
+{% load poll_extras %}
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">خانـه</a></li>
+                <li class="active">پرداخت</li>
+            </ol>
+        </div><!--/breadcrums-->
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">کـالا</td>
+                        <td class="description"></td>
+                        <td class="price">قیمت</td>
+                        <td class="quantity">تعـداد</td>
+                        <td class="total">مجمـوع</td>
+                        <td></td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% if Order.order_detail_set.all %}
+                    {% for productSet in Order.order_detail_set.all %}
+                        <tr>
+                            <td class="cart_product">
+                                <a href=""><img class="image-cart-detail" src="{{ productSet.product.images.url }}" alt=""></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href="">{{ productSet.product.title }}</a></h4>
+                            </td>
+                            <td class="cart_price">
+                                <p>{{ productSet.product.price | three_digits_currency }}</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <a class="cart_quantity_up" onclick="editordercount({{ productSet.id }}, 'up', event)" href=""> + </a>
+                                    <input class="cart_quantity_input" type="text" name="quantity"
+                                           value="{{ productSet.count }}" autocomplete="off" size="2"
+                                           readonly onkeydown="return false;">
+                                    <a class="cart_quantity_down" onclick="editordercount({{ productSet.id }}, 'Down', event)" href=""> - </a>
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">{% multiply productSet.count productSet.product.price %}</p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" onclick="removeProductAsOrder(event, {{ productSet.product.id }})" href="">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <!-- پیام سبد خرید خالی درون جدول -->
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <p class="alert alert-warning">
+                                🛒 سبد خرید شما خالی است! لطفاً محصولات مورد نظر خود را اضافه کنید.
+                            </p>
+                        </td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+{% if Order.order_detail_set.all %}
+    <section id="do_action">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="total_area">
+                        <ul>
+                            <li>مجمـوع <span>{{ total_price | three_digits_currency }}</span></li>
+                        </ul>
+                        <a class="btn btn-default check_out" href="checkout.html">پرداخت</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#do_action-->
+{% endif %}

@@ -1,0 +1,73 @@
+.errotlist {
+    padding-right: 0 !important;
+}
+
+.errorlist li{
+    color: red;
+}
+ul{
+    padding-right: 0;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+/*body {*/
+/*  background-image: url('/static/images/Screenshot_48.png'); !* مسیر عکس *!*/
+/*  background-size: cover; !* تصویر تمام صفحه را بپوشاند *!*/
+/*  background-repeat: no-repeat; !* تصویر تکرار نشود *!*/
+/*  background-position: center; !* تصویر در مرکز قرار بگیرد *!*/
+/*}*/
+
+/*!* تنظیم پس‌زمینه برای کل صفحه *!*/
+/*body, html {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    height: 100%;*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+
+/*.background {*/
+/*    background-image: url('/static/images/424613709_1523323238512955_4362141747699855621_n.jpg'); !* مسیر عکس *!*/
+/*    background-size: cover; !* تصویر تمام صفحه را بپوشاند *!*/
+/*    background-position: center; !* مرکز تصویر *!*/
+/*    background-repeat: no-repeat; !* تکرار نشود *!*/
+/*    height: 100%; !* ارتفاع کل صفحه *!*/
+/*    width: 100%; !* عرض کل صفحه *!*/
+/*}*/
+
+/* استایل متن روی عکس */
+/*.content {*/
+/*    color: white; !* رنگ متن *!*/
+/*    text-align: center; !* متن در وسط صفحه *!*/
+/*    position: relative; !* موقعیت نسبی *!*/
+/*    top: 50%; !* قرارگیری در وسط *!*/
+/*    transform: translateY(-50%); !* تنظیم دقیق وسط *!*/
+/*}*/
+
+/*.content h1 {*/
+/*    font-size: 3rem;*/
+/*    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); !* سایه برای خوانایی بهتر *!*/
+/*}*/
+
+/*.content p {*/
+/*    font-size: 1.5rem;*/
+/*    margin-top: 10px;*/
+/*    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);*/
+/*}*/
+
+.image-cart-detail {
+    width: 110px;
+    height: 110px;
+    object-fit: cover; /* برای اینکه تصویر به درستی در ابعاد 110x110 قرار بگیرد بدون اینکه کشیده یا فشرده شود */
+}
+.empty-cart-message {
+    font-size: 18px;
+    padding: 15px;
+    background-color: #fff3cd; /* رنگ پس‌زمینه زرد ملایم */
+    color: #856404; /* رنگ متن */
+    border: 1px solid #ffeeba; /* حاشیه */
+    border-radius: 8px; /* گرد کردن گوشه‌ها */
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
