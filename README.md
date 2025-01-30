@@ -1,80 +1,82 @@
 # EshopProject
 
-## توضیحات کوتاه
-EshopProject یک فروشگاه آنلاین است که با استفاده از Django توسعه یافته است. این پلتفرم امکان مدیریت محصولات، سفارشات و کاربران را فراهم می‌کند.
-توجه: سایت هنوز به‌طور کامل به اتمام نرسیده، اما تمام ویژگی‌های ذکرشده اضافه شده و به‌درستی کار می‌کنند.
+## Short Description
+EshopProject is an online store developed using Django. This platform allows managing products, orders, and users.
 
-## فهرست مطالب
-- [ویژگی‌ها](#ویژگیها)
-- [پیش‌نیازها](#پیشنیازها)
-- [نصب و راه‌اندازی](#نصب-و-راهاندازی)
-- [نحوه استفاده](#نحوه-استفاده)
-- [ساختار پوشه‌ها](#ساختار-پوشهها)
-- [مشارکت](#مشارکت)
-- [لایسنس](#لایسنس)
-- [تماس](#تماس)
+**Note:** The site is not fully completed yet, but all mentioned features have been implemented and are functioning correctly.
 
-## ویژگی‌ها
-- **مدیریت محصولات:** امکان افزودن، ویرایش و حذف محصولات به همراه دسته‌بندی و تصاویر
-- **دسته‌بندی‌های تو در تو:** امکان دسته‌بندی چندسطحی محصولات برای نمایش بهتر
-- **سبد خرید:** قابلیت اضافه کردن محصولات به سبد خرید و پردازش سفارش
-- **فیلتر قیمت:** امکان فیلتر محصولات بر اساس محدوده قیمت
-- **پنل کاربری:** داشبورد اختصاصی برای کاربران جهت مشاهده سفارشات، مدیریت آدرس‌ها و اطلاعات شخصی
-- **صفحه تماس با ما:** امکان ارسال پیام توسط کاربران و مدیریت پیام‌های دریافتی توسط ادمین
-- **مدیریت مقالات:** امکان انتشار مقالات و اخبار مرتبط با فروشگاه
-- **پنل مدیریت:** محیطی برای مدیران سایت جهت مدیریت بخش‌های مختلف فروشگاه
-- **درگاه پرداخت:** پشتیبانی از پرداخت آنلاین برای تسویه حساب سریع و آسان
-- **ریسپانسیو بودن:** طراحی کاملاً واکنش‌گرا برای نمایش بهتر در دستگاه‌های مختلف
-- **مدیریت تنظیمات سایت:** امکان تغییر تنظیمات عمومی سایت از طریق پنل مدیریت
-- **احراز هویت کاربران:** شامل قابلیت‌های ورود، خروج، بازیابی رمز عبور، فعال‌سازی حساب از طریق ایمیل
+## Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contribution](#contribution)
+- [License](#license)
+- [Contact](#contact)
 
-## پیش‌نیازها
-قبل از نصب، مطمئن شوید که موارد زیر روی سیستم شما نصب شده‌اند:
+## Features
+- **Product Management:** Add, edit, and delete products with categories and images
+- **Nested Categories:** Multi-level product categorization for better organization
+- **Order Management:** View and manage user orders with shipping and payment status
+- **Shopping Cart:** Add products to the cart and process orders
+- **Price Filtering:** Filter products based on price range
+- **User Panel:** Dedicated dashboard for users to manage orders, addresses, and personal information
+- **Contact Page:** Users can send messages, and admins can manage received messages
+- **Article Management:** Publish articles and news related to the store
+- **Admin Panel:** A dedicated environment for admins to manage various sections of the store
+- **Payment Gateway:** Support for online payments for seamless transactions
+- **Responsive Design:** Fully responsive design for optimal viewing on different devices
+- **Site Settings Management:** Ability to change general site settings via the admin panel
+- **User Authentication:** Features include login, logout, password recovery, and email activation
+
+## Prerequisites
+Ensure the following dependencies are installed on your system:
 - Python 3.x
 - Django
 - pip
-- Virtualenv (اختیاری اما توصیه‌شده)
+- Virtualenv (optional but recommended)
 
-## نصب و راه‌اندازی
+## Installation
 
-1. **کلون کردن مخزن:**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/AliNamavar/EshopProject.git
    cd EshopProject
    ```
 
-2. **ایجاد و فعال‌سازی محیط مجازی:**
+2. **Create and activate a virtual environment:**
    ```bash
    python -m venv env
-   source env/bin/activate  # برای ویندوز: .\env\Scripts\activate
+   source env/bin/activate  # On Windows: .\env\Scripts\activate
    ```
 
-3. **نصب وابستگی‌ها:**
+3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **اجرای مهاجرت‌های پایگاه داده:**
+4. **Apply database migrations:**
    ```bash
    python manage.py migrate
    ```
 
-5. **اجرای سرور توسعه:**
+5. **Run the development server:**
    ```bash
    python manage.py runserver
    ```
 
-6. **دسترسی به برنامه:**
-   مرورگر خود را باز کرده و به آدرس `http://localhost:8000` بروید.
+6. **Access the application:**
+   Open your browser and go to `http://localhost:8000`.
 
-## نحوه استفاده
-- **مدیریت محصولات:** امکان افزودن، ویرایش و حذف محصولات
-- **مدیریت سفارشات:** مشاهده و مدیریت سفارشات کاربران
-- **سبد خرید:** کاربران می‌توانند محصولات موردنظر خود را به سبد خرید اضافه کرده و پرداخت را انجام دهند
-- **تماس با ما:** کاربران می‌توانند از طریق فرم تماس با مدیریت در ارتباط باشند
-- **پنل کاربری:** مشاهده و مدیریت اطلاعات شخصی، سفارشات و آدرس‌ها
+## Usage
+- **Product Management:** Add, edit, and delete products
+- **Order Management:** View and handle user orders
+- **Shopping Cart:** Users can add products to the cart and proceed with payment
+- **Contact Page:** Users can reach out to the admin via a contact form
+- **User Panel:** Manage personal information, orders, and addresses
 
-## ساختار پوشه‌ها
+## Project Structure
 ```
 EshopProject/
 ├── account_module/
@@ -94,19 +96,20 @@ EshopProject/
 └── requirements.txt
 ```
 
-## مشارکت
+## Contribution
 
-از مشارکت شما در این پروژه استقبال می‌شود. برای مشارکت:
+Contributions are welcome! To contribute:
 
-1. مخزن را فورک کنید.
-2. یک برنچ جدید ایجاد کنید (`git checkout -b feature/AmazingFeature`).
-3. تغییرات خود را کامیت کنید (`git commit -m 'Add some AmazingFeature'`).
-4. تغییرات را به مخزن خود پوش کنید (`git push origin feature/AmazingFeature`).
-5. یک Pull Request ارسال کنید.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
-## لایسنس
-[در صورت وجود اطلاعات لایسنس را در اینجا وارد کنید.]
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## تماس
-برای سوالات و پیشنهادات می‌توانید با ایمیل [alinamavar315@gmail.com] تماس بگیرید.
+
+## Contact
+For questions and suggestions, you can reach out via email at [alinamavar315@gmail.com].
 
