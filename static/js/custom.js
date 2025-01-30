@@ -152,29 +152,32 @@ function editordercount(ProductId, status, event){
     })}
 
 
-// $(document).ready(function() {
-//     window.editordercount = function(ProductId, status, event) {
-//         event.preventDefault();
-//
-//         $.ajax({
-//             type: 'POST',
-//             url: 'order-edit-count',
-//             data: {
-//                 'product_id': ProductId,
-//                 'newCount': status,
-//                 'csrfmiddlewaretoken': csrftoken
-//             },
-//             success: function(res) {
-//                 if (res.status === 'success') {
-//                     setTimeout(function() {
-//                         $('#allOrderAjaxs').html(res.data);
-//                     }, 100);
-//                 }
-//             }
-//         });
-//     };
-// });
-//
 
-
+function addProductToCartFromHome(productId) {
+    var count = 1
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/add-product-to-order',
+        data: {
+            'product_id': productId,
+            'count': count
+        },
+        headers: {
+            'X-CSRFToken': csrftoken
+        },
+        success: function (res) {
+            if (res.status === 'success') {
+                Swal.fire({
+                    icon: res.icon,
+                    text: res.mesaage
+                });
+            } else {
+                Swal.fire({
+                    icon: res.icon,
+                    text: res.message
+                });
+            }
+        }
+    });
+}
 

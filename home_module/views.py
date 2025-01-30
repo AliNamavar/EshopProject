@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.base import TemplateView
@@ -16,6 +17,10 @@ class HomeView(TemplateView):
         product_new =  list(product.objects.filter(is_active=True, is_deleted=False).order_by('-id')[:8])
         chuncked_product = split_list(product_new)
         context['new_product'] = chuncked_product
+
+        product_visits = list(product.objects.filter(is_active=True, is_deleted=False).annotate(visits_count=Count('productVisitCount')).order_by('-visits_count'))[:12]
+        product_visits_listed = split_list(product_visits)
+        context['product_visits'] = product_visits_listed
 
         return context
 
