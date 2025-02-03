@@ -5,7 +5,7 @@ from django.db.models import Count
 from utils.http_service_get_ip import get_client_ip
 from site_module.models import site_banner
 from .models import product, productCategory, product_Brands, ProductVisitCount
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -48,6 +48,10 @@ class ProductListView(ListView):
         brand_name = self.kwargs.get('brand')
         if brand_name is not None:
             query = query.filter(Brand__url_title__iexact=brand_name)
+
+        search_query = self.request.GET.get('search')
+        if search_query is not None:
+            query = query.filter(Q(title__icontains=search_query))
 
         return query
 

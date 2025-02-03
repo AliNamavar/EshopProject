@@ -93,6 +93,9 @@
                         <div>
                             <form action="" method="get" id="filter_form">
                                 <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+                                {% if request.GET.search %}
+                                	<input type="hidden" name="search" value="{{ request.GET.search }}">
+                                {% endif %}
                                 <input type="hidden" name="start_price" id="start_price" value="{{ start_price }}">
                                 <input type="hidden" name="end_price" id="end_price" value="{{ end_price }}">
                             </form>
