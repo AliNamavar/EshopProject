@@ -15,9 +15,11 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 class add_product_to_order(View):
     def post(self, request, *args, **kwargs):
         product_id = request.POST.get('product_id')
-        count = int(request.POST.get('count'))
+        count = request.POST.get('count')
+        if count is None:
+            count = 1
         if request.user.is_authenticated:
-            if count < 1:
+            if int(count) < 1:
                 return JsonResponse({
                     'status': 'error',
                     'message': 'تعداد محصول نمیتواند کمتر از 1 باشد',
@@ -36,27 +38,27 @@ class add_product_to_order(View):
                     current_order, created = Order_Model.objects.get_or_create(User=request.user, is_paid=False)
                     product_detail = current_order.order_detail_set.filter(product_id=product_get).first()
                     if product_detail is not None:
-                        product_detail.count += count
+                        product_detail.count += int(count)
                         product_detail.save()
                         return JsonResponse({
                             'status': 'success',
-                            'mesaage': 'محصول با موفقیت در سبد خرید شما ذخیره شد',
+                            'message': 'محصول با موفقیت در سبد خرید شما ذخیره شد',
                             'icon': 'success'
                         })
                     else:
                         current_order.order_detail_set.create(
                             product=product_get,
-                            count=count,
+                            count=int(count),
                             order=current_order,
                         )
                         return JsonResponse({
                             'status': 'success',
-                            'mesaage': 'محصول با موفقیت در سبد خرید شما ذخیره شد',
+                            'message': 'محصول با موفقیت در سبد خرید شما ذخیره شد',
                             'icon': 'success'
                         })
         else:
             return JsonResponse({
-                'status': 'error',
+                'status': 'not_auth',
                 'message': 'you most log in to your account first',
                 'icon': 'info'
 

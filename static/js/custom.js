@@ -59,8 +59,6 @@ function fillpage(page) {
 }
 
 
-
-
 // function addProductToCart(productId){
 //     console.log(productId)
 //     var count = $('#countProductOrder').val()
@@ -100,18 +98,16 @@ function addProductToCart(productId) {
         headers: {
             'X-CSRFToken': csrftoken
         },
+
         success: function (res) {
-            if (res.status === 'success') {
-                Swal.fire({
-                    icon: res.icon,
-                    text: res.mesaage
-                });
-            } else {
-                Swal.fire({
-                    icon: res.icon,
-                    text: res.message
-                });
-            }
+            Swal.fire({
+                icon: res.icon,
+                text: res.message
+            }).then(confirm => {
+                if (confirm.isConfirmed && res.status === 'not_auth') {
+                    window.location.href = '/login'
+                }
+            })
         }
     });
 }
