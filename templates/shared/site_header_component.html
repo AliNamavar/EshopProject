@@ -43,11 +43,11 @@
                     {#                                                  style="text-align: center;"/></a>#}
                     {#                    </div>#}
                     <div class="logo">
-{#                        {% thumbnail site_settings.site_logo "180x51" crop='center' quality=95 as im %}#}
-                                            
-                            <a href="/"><img src="{{ site_settings.site_logo.url }}" alt="Logo"
-                                             style="text-align: center;"/></a>
-{#                        {% endthumbnail %}#}
+                        {#                        {% thumbnail site_settings.site_logo "180x51" crop='center' quality=95 as im %}#}
+
+                        <a href="/"><img src="{{ site_settings.site_logo.url }}" alt="Logo"
+                                         style="text-align: center;"/></a>
+                        {#                        {% endthumbnail %}#}
                     </div>
 
 
@@ -90,9 +90,19 @@
 
                 <div class="col-sm-3">
                     <div class="search_box pull-left">
-                        <input type="text" placeholder="جستـجو"/>
+                        <form action="{% url 'product_list' %}" method="get">
+                            <input type="text" name="search" value="{{ query_search }}" placeholder="جستـجو"/>
+                            <input type="hidden" name="start_price"
+                                   value="{{ request.GET.start_price }}">
+                            <input type="hidden" name="end_price"
+                                   value="{{ request.GET.end_price }}">
+{#                            {% if request.GET.page %}#}
+                            <input type="hidden" name="page"  value="{{ request.GET.page }}">
+{#                            {% endif %}#}
+                        </form>
                     </div>
                 </div>
+
 
                 <div class="col-sm-9">
                     <div class="navbar-header">
@@ -107,7 +117,8 @@
                     <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{% url 'index_home_module' %}"
-                                   class="{% if request.resolver_match.url_name == 'index_home_module' %}active{% endif %}">
+                                   class="{% if request.resolver_match.url_name == 'index_home_module' %}
+                                active{% endif %}">
                                 خـانه
                             </a>
                             </li>

@@ -28,7 +28,8 @@ class HomeView(TemplateView):
 def site_header_component(request):
     site_settings = siteSettings.objects.filter(is_main_setting=True).first()
     context = {
-        'site_settings': site_settings
+        'site_settings': site_settings,
+        'query_search': request.GET.get('search', ''),
     }
     return render(request, "shared/site_header_component.html", context)
 
