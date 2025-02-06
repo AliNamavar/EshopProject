@@ -7,13 +7,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('article_module', '0009_alter_article_comments_options'),
+        ("article_module", "0009_alter_article_comments_options"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Article_comments',
-            new_name='ArticleComments',
+            old_name="Article_comments",
+            new_name="ArticleComments",
         ),
     ]

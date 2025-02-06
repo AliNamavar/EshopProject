@@ -7,25 +7,48 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=300, verbose_name='title')),
-                ('email', models.EmailField(max_length=300, verbose_name='Email')),
-                ('full_name', models.CharField(max_length=300, verbose_name='Full_name')),
-                ('message', models.TextField(verbose_name='contact us text')),
-                ('is_read_by_admin', models.BooleanField(default=False, verbose_name='read by admin')),
-                ('created_date', models.DateTimeField(auto_now_add=True, verbose_name='created day time')),
-                ('response', models.TextField(blank=True, null=True, verbose_name='response text')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=300, verbose_name="title")),
+                ("email", models.EmailField(max_length=300, verbose_name="Email")),
+                (
+                    "full_name",
+                    models.CharField(max_length=300, verbose_name="Full_name"),
+                ),
+                ("message", models.TextField(verbose_name="contact us text")),
+                (
+                    "is_read_by_admin",
+                    models.BooleanField(default=False, verbose_name="read by admin"),
+                ),
+                (
+                    "created_date",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="created day time"
+                    ),
+                ),
+                (
+                    "response",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="response text"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'contact-us',
-                'verbose_name_plural': 'contact-us-list',
+                "verbose_name": "contact-us",
+                "verbose_name_plural": "contact-us-list",
             },
         ),
     ]

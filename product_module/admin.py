@@ -4,6 +4,7 @@ from . import models
 
 # Register your models here.
 
+
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ["category", "is_active"]
     list_display = ["title", "price", "is_active", "is_deleted"]

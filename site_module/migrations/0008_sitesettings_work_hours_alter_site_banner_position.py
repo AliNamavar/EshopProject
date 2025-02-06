@@ -6,18 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('site_module', '0007_site_banner'),
+        ("site_module", "0007_site_banner"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='sitesettings',
-            name='work_hours',
-            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='ساعات کاری'),
+            model_name="sitesettings",
+            name="work_hours",
+            field=models.CharField(
+                blank=True, max_length=100, null=True, verbose_name="ساعات کاری"
+            ),
         ),
         migrations.AlterField(
-            model_name='site_banner',
-            name='position',
-            field=models.CharField(choices=[('product_list', 'صفحه ی لیست محصولات'), ('product_detail', 'صفحه ی جزییات محصولات'), ('article_detail', 'جزییات مقاله')], max_length=100, verbose_name='جایگاه نمایش محصول'),
+            model_name="site_banner",
+            name="position",
+            field=models.CharField(
+                choices=[
+                    ("product_list", "صفحه ی لیست محصولات"),
+                    ("product_detail", "صفحه ی جزییات محصولات"),
+                    ("article_detail", "جزییات مقاله"),
+                ],
+                max_length=100,
+                verbose_name="جایگاه نمایش محصول",
+            ),
         ),
     ]

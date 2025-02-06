@@ -6,25 +6,52 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('article_module', '0003_articlecategory_parent'),
+        ("article_module", "0003_articlecategory_parent"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='عنوان')),
-                ('slug', models.SlugField(allow_unicode=True, max_length=400, unique=True, verbose_name='عنوان در url')),
-                ('image', models.ImageField(upload_to='images/Article', verbose_name='تصویر')),
-                ('short_description', models.TextField(verbose_name='توضیحات کوتاه')),
-                ('description', models.TextField(verbose_name='توضیحات')),
-                ('is_active', models.BooleanField(default=True, verbose_name='Is active')),
-                ('selected_categories', models.ManyToManyField(to='article_module.articlecategory', verbose_name='دسته بندی')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="عنوان")),
+                (
+                    "slug",
+                    models.SlugField(
+                        allow_unicode=True,
+                        max_length=400,
+                        unique=True,
+                        verbose_name="عنوان در url",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(upload_to="images/Article", verbose_name="تصویر"),
+                ),
+                ("short_description", models.TextField(verbose_name="توضیحات کوتاه")),
+                ("description", models.TextField(verbose_name="توضیحات")),
+                (
+                    "is_active",
+                    models.BooleanField(default=True, verbose_name="Is active"),
+                ),
+                (
+                    "selected_categories",
+                    models.ManyToManyField(
+                        to="article_module.articlecategory", verbose_name="دسته بندی"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Article',
-                'verbose_name_plural': "Article's",
+                "verbose_name": "Article",
+                "verbose_name_plural": "Article's",
             },
         ),
     ]

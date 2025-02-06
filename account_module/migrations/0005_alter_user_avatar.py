@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account_module', '0004_alter_user_email_active_code'),
+        ("account_module", "0004_alter_user_email_active_code"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='avatar',
-            field=models.ImageField(blank=True, null=True, upload_to='images/users', verbose_name='نصویر آواتار'),
+            model_name="user",
+            name="avatar",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="images/users",
+                verbose_name="نصویر آواتار",
+            ),
         ),
     ]

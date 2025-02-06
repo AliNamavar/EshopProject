@@ -6,16 +6,22 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('site_module', '0002_footerlinkbox_footerlink'),
+        ("site_module", "0002_footerlinkbox_footerlink"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='footerlink',
-            options={'verbose_name': ' footer link', 'verbose_name_plural': 'footer links'},
+            name="footerlink",
+            options={
+                "verbose_name": " footer link",
+                "verbose_name_plural": "footer links",
+            },
         ),
         migrations.AlterModelOptions(
-            name='footerlinkbox',
-            options={'verbose_name': 'Category link footer', 'verbose_name_plural': "Category's link footer"},
+            name="footerlinkbox",
+            options={
+                "verbose_name": "Category link footer",
+                "verbose_name_plural": "Category's link footer",
+            },
         ),
     ]

@@ -6,15 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contact_module', '0001_initial'),
+        ("contact_module", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CreateProfile',
+            name="CreateProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.FileField(upload_to='images')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image", models.FileField(upload_to="images")),
             ],
         ),
     ]

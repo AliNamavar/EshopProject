@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account_module', '0003_user_about_user_alter_user_avatar'),
+        ("account_module", "0003_user_about_user_alter_user_avatar"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='email_active_code',
-            field=models.CharField(max_length=75, verbose_name='کد فعالسازی ایمیل'),
+            model_name="user",
+            name="email_active_code",
+            field=models.CharField(max_length=75, verbose_name="کد فعالسازی ایمیل"),
         ),
     ]

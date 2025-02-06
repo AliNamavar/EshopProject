@@ -6,12 +6,15 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('article_module', '0008_article_comments'),
+        ("article_module", "0008_article_comments"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='article_comments',
-            options={'verbose_name': 'Article_Comment', 'verbose_name_plural': 'Article_Comments'},
+            name="article_comments",
+            options={
+                "verbose_name": "Article_Comment",
+                "verbose_name_plural": "Article_Comments",
+            },
         ),
     ]

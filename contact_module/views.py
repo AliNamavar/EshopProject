@@ -14,19 +14,23 @@ class ContactView(CreateView):
     # model = Contact
     # fields = ['title', 'email', 'full_name', 'message']
     form_class = ContactModelForm
-    template_name = 'contact_module/contact_us_page.html'
-    success_url = '/contact-us'
+    template_name = "contact_module/contact_us_page.html"
+    success_url = "/contact-us"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        site_settings: siteSettings = siteSettings.objects.filter(is_main_setting=True).first()
-        context['site_settings'] = site_settings
+        site_settings: siteSettings = siteSettings.objects.filter(
+            is_main_setting=True
+        ).first()
+        context["site_settings"] = site_settings
         return context
+
+
 class CreateProfileView(CreateView):
-    template_name = 'contact_module/create_pprofile.html'
+    template_name = "contact_module/create_pprofile.html"
     model = CreateProfile
-    fields = '__all__'
-    success_url = '/contact-us/create-profile'
+    fields = "__all__"
+    success_url = "/contact-us/create-profile"
 
 
 # class ContactView(FormView):

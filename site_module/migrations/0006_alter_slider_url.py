@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('site_module', '0005_slider_is_active'),
+        ("site_module", "0005_slider_is_active"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='slider',
-            name='url',
-            field=models.URLField(max_length=500, verbose_name='لینک'),
+            model_name="slider",
+            name="url",
+            field=models.URLField(max_length=500, verbose_name="لینک"),
         ),
     ]

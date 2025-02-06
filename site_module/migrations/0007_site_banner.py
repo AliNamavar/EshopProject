@@ -6,23 +6,59 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('site_module', '0006_alter_slider_url'),
+        ("site_module", "0006_alter_slider_url"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='site_banner',
+            name="site_banner",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='عنوان بنر')),
-                ('url_title', models.URLField(blank=True, max_length=400, null=True, verbose_name='عنوان بنر در url')),
-                ('image', models.ImageField(upload_to='images/banner', verbose_name='عکس بنر')),
-                ('is_active', models.BooleanField(max_length=100, verbose_name='فعال / غیر فعال ')),
-                ('position', models.CharField(choices=[('product_list', 'صفحهی لیست محصولات'), ('product_detail', 'صفحهی جزییات محصولات')], max_length=100, verbose_name='جایگاه نمایش محصول')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="عنوان بنر")),
+                (
+                    "url_title",
+                    models.URLField(
+                        blank=True,
+                        max_length=400,
+                        null=True,
+                        verbose_name="عنوان بنر در url",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="images/banner", verbose_name="عکس بنر"
+                    ),
+                ),
+                (
+                    "is_active",
+                    models.BooleanField(
+                        max_length=100, verbose_name="فعال / غیر فعال "
+                    ),
+                ),
+                (
+                    "position",
+                    models.CharField(
+                        choices=[
+                            ("product_list", "صفحهی لیست محصولات"),
+                            ("product_detail", "صفحهی جزییات محصولات"),
+                        ],
+                        max_length=100,
+                        verbose_name="جایگاه نمایش محصول",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'banner',
-                'verbose_name_plural': 'banners',
+                "verbose_name": "banner",
+                "verbose_name_plural": "banners",
             },
         ),
     ]
