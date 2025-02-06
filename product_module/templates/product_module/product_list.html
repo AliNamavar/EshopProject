@@ -13,11 +13,20 @@
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
                         <h2 class="title text-center">محصولات </h2>
-                        {% for product in  products %}
-                            {% include 'includes/product_item_in.html' with product=product %}
-                        {% endfor %}
+                        {% if products %}
+                            {% for product in  products %}
+                                {% include 'includes/product_item_in.html' with product=product %}
+                            {% endfor %}
+                        {% else %}
 
-                        <ul class="pagination">
+                            <div class="col-12 text-center">
+                                <p class="no-products-message">No products found matching your search.</p>
+                            </div>
+                        {% endif %}
+
+
+                        {% if products %}
+                        	<ul class="pagination">
 
                             {% if page_obj.has_previous %}
                                 <li><a class="cursor-pointer" onclick="fillpage({{ page_obj.previous_page_number }})">
@@ -35,6 +44,7 @@
                                     بعدی </a></li>
                             {% endif %}
                         </ul>
+                        {% endif %}
                         {#                        <ul class="pagination">#}
                         {##}
                         {#                            {% if page_obj.has_previous %}#}
@@ -93,15 +103,23 @@
                         <div>
                             <form action="" method="get" id="filter_form">
                                 <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+                                {#                                {% if request.GET.search %}#}
+                                <input type="hidden" name="search" value="{{ request.GET.search }}">
+                                {#                                {% endif %}#}
+                                {#                                {% if request.GET.start_price %}#}
                                 <input type="hidden" name="start_price" id="start_price" value="{{ start_price }}">
                                 <input type="hidden" name="end_price" id="end_price" value="{{ end_price }}">
+                                {#                                {% endif %}#}
+
+
                             </form>
                         </div>
                         <button class="btn btn-success btn-block" onclick="filterProduct()">اعمال فیلتر</button>
 
                         <div class="shipping text-center"><!--shipping-->
                             {% for banner in banners %}
-                                <a href="{{ banner.url_title }}"><img src="{{ banner.image.url }}" alt=""style="width: 100%"></a>                                
+                                <a href="{{ banner.url_title }}"><img src="{{ banner.image.url }}" alt=""
+                                                                      style="width: 100%"></a>
                             {% endfor %}
                         </div><!--/shipping-->
 

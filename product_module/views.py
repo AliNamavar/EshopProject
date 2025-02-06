@@ -5,7 +5,7 @@ from django.db.models import Count
 from utils.http_service_get_ip import get_client_ip
 from site_module.models import site_banner
 from .models import product, productCategory, product_Brands, ProductVisitCount
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -36,9 +36,10 @@ class ProductListView(ListView):
 
         start_price = request.GET.get('start_price')
         end_price = request.GET.get('end_price')
-        if start_price is not None:
+        print(f'start_price={start_price}, end_price={end_price}')
+        if start_price:
             query = query.filter(price__gte=start_price)
-        if end_price is not None:
+        if end_price:
             query = query.filter(price__lte=end_price)
 
         category_name = self.kwargs.get('category')
@@ -48,6 +49,10 @@ class ProductListView(ListView):
         brand_name = self.kwargs.get('brand')
         if brand_name is not None:
             query = query.filter(Brand__url_title__iexact=brand_name)
+
+        search_query = self.request.GET.get('search')
+        if search_query is not None:
+            query = query.filter(Q(title__icontains=search_query))
 
         return query
 

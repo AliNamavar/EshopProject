@@ -40,16 +40,15 @@ function fillpatternid(parentId) {
 // }
 
 function filterProduct() {
-    // گرفتن مقدار فیلتر قیمت
     const filterPrice = $('#sl2').val();
     const startPrice = filterPrice.split(',')[0];
     const endPrice = filterPrice.split(',')[1];
+    console.log('Filter Price:', filterPrice);
 
-    // تنظیم مقادیر در فیلدهای hidden
     $('#start_price').val(startPrice);
     $('#end_price').val(endPrice);
 
-    // ارسال فرم
+
     $('#filter_form').submit();
 }
 
@@ -58,6 +57,7 @@ function fillpage(page) {
     $('#filter_form').submit();
 
 }
+
 
 // function addProductToCart(productId){
 //     console.log(productId)
@@ -98,18 +98,16 @@ function addProductToCart(productId) {
         headers: {
             'X-CSRFToken': csrftoken
         },
+
         success: function (res) {
-            if (res.status === 'success') {
-                Swal.fire({
-                    icon: res.icon,
-                    text: res.mesaage
-                });
-            } else {
-                Swal.fire({
-                    icon: res.icon,
-                    text: res.message
-                });
-            }
+            Swal.fire({
+                icon: res.icon,
+                text: res.message
+            }).then(confirm => {
+                if (confirm.isConfirmed && res.status === 'not_auth') {
+                    window.location.href = '/login'
+                }
+            })
         }
     });
 }
@@ -132,25 +130,25 @@ function removeProductAsOrder(event, productId) {
     })
 }
 
-function editordercount(ProductId, status, event){
+function editordercount(ProductId, status, event) {
     event.preventDefault()
 
     $.ajax({
         type: 'POST',
         url: 'order-edit-count',
-        data:{
+        data: {
             'product_id': ProductId,
             'newCount': status,
             'csrfmiddlewaretoken': csrftoken
         },
-        success: function (res){
-            if (res.status === 'success'){
+        success: function (res) {
+            if (res.status === 'success') {
                 $('#allOrderAjaxs').html(res.data)
             }
 
         }
-    })}
-
+    })
+}
 
 
 function addProductToCartFromHome(productId) {
