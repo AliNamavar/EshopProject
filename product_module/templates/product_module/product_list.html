@@ -93,19 +93,27 @@
                         <div>
                             <form action="" method="get" id="filter_form">
                                 <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
-                                {% if request.GET.search %}
-                                	<input type="hidden" name="search" value="{{ request.GET.search }}">
-                                {% endif %}
+                                {#                                {% if request.GET.search %}#}
+                                <input type="hidden" name="search" value="{{ request.GET.search }}">
+                                {#                                {% endif %}#}
+                                {#                                {% if request.GET.start_price %}#}
                                 <input type="hidden" name="start_price" id="start_price" value="{{ start_price }}">
                                 <input type="hidden" name="end_price" id="end_price" value="{{ end_price }}">
+                                {#                                {% endif %}#}
+
+
                             </form>
                         </div>
                         <button class="btn btn-success btn-block" onclick="filterProduct()">اعمال فیلتر</button>
 
                         <div class="shipping text-center"><!--shipping-->
                             {% for banner in banners %}
-                                <a href="{{ banner.url_title }}"><img src="{{ banner.image.url }}" alt=""style="width: 100%"></a>                                
+                                <a href="{{ banner.url_title }}"><img src="{{ banner.image.url }}" alt=""
+                                                                      style="width: 100%"></a>
                             {% endfor %}
+                            <p>start_price: {{ start_price }}</p>
+                            <p>end_price: {{ end_price }}</p>
+
                         </div><!--/shipping-->
 
                     </div>

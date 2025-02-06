@@ -36,9 +36,10 @@ class ProductListView(ListView):
 
         start_price = request.GET.get('start_price')
         end_price = request.GET.get('end_price')
-        if start_price is not None:
+        print(f'start_price={start_price}, end_price={end_price}')
+        if start_price:
             query = query.filter(price__gte=start_price)
-        if end_price is not None:
+        if end_price:
             query = query.filter(price__lte=end_price)
 
         category_name = self.kwargs.get('category')

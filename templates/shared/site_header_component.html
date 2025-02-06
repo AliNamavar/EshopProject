@@ -92,15 +92,13 @@
                     <div class="search_box pull-left">
                         <form action="{% url 'product_list' %}" method="get">
                             <input type="text" name="search" value="{{ query_search }}" placeholder="جستـجو"/>
-                            {% if request.GET.start_price %}
-                                <input type="hidden" name="start_price" id="start_price"
-                                       value="{{ request.GET.start_price }}">
-                                <input type="hidden" name="end_price" id="end_price"
-                                       value="{{ request.GET.end_price }}">
-                            {% endif %}
-                            {% if request.GET.page %}
-                                <input type="hidden" name="page" id="page" value="{{ request.GET.page }}">
-                            {% endif %}
+                            <input type="hidden" name="start_price"
+                                   value="{{ request.GET.start_price }}">
+                            <input type="hidden" name="end_price"
+                                   value="{{ request.GET.end_price }}">
+{#                            {% if request.GET.page %}#}
+                            <input type="hidden" name="page"  value="{{ request.GET.page }}">
+{#                            {% endif %}#}
                         </form>
                     </div>
                 </div>
