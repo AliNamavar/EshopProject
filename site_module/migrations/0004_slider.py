@@ -6,23 +6,39 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('site_module', '0003_alter_footerlink_options_alter_footerlinkbox_options'),
+        ("site_module", "0003_alter_footerlink_options_alter_footerlinkbox_options"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='slider',
+            name="slider",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='عنوان')),
-                ('url', models.CharField(max_length=100, verbose_name='لینک')),
-                ('url_title', models.CharField(max_length=100, verbose_name='عنوان لینک')),
-                ('descriptions', models.TextField(verbose_name='توضیحات')),
-                ('images', models.ImageField(upload_to='images/slider', verbose_name='تصویر اسلایدر')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="عنوان")),
+                ("url", models.CharField(max_length=100, verbose_name="لینک")),
+                (
+                    "url_title",
+                    models.CharField(max_length=100, verbose_name="عنوان لینک"),
+                ),
+                ("descriptions", models.TextField(verbose_name="توضیحات")),
+                (
+                    "images",
+                    models.ImageField(
+                        upload_to="images/slider", verbose_name="تصویر اسلایدر"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'slayder',
-                'verbose_name_plural': "slayder's",
+                "verbose_name": "slayder",
+                "verbose_name_plural": "slayder's",
             },
         ),
     ]

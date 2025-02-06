@@ -7,13 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('product_module', '0003_product_images'),
+        ("product_module", "0003_product_images"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='productcategory',
-            name='parent',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='product_module.productcategory', verbose_name='دسته بندی والد'),
+            model_name="productcategory",
+            name="parent",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="product_module.productcategory",
+                verbose_name="دسته بندی والد",
+            ),
         ),
     ]

@@ -8,19 +8,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('article_module', '0005_article_author'),
+        ("article_module", "0005_article_author"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='article',
-            name='author',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='نویسنده'),
+            model_name="article",
+            name="author",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="نویسنده",
+            ),
         ),
         migrations.AlterField(
-            model_name='article',
-            name='slug',
-            field=models.SlugField(allow_unicode=True, blank=True, max_length=400, unique=True, verbose_name='عنوان در url'),
+            model_name="article",
+            name="slug",
+            field=models.SlugField(
+                allow_unicode=True,
+                blank=True,
+                max_length=400,
+                unique=True,
+                verbose_name="عنوان در url",
+            ),
         ),
     ]

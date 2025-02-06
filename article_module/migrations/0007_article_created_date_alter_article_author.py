@@ -9,20 +9,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('article_module', '0006_alter_article_author_alter_article_slug'),
+        ("article_module", "0006_alter_article_author_alter_article_slug"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='article',
-            name='created_date',
-            field=models.DateTimeField(auto_now_add=True, default=datetime.date(2024, 11, 30), verbose_name='زمان ساخته شده'),
+            model_name="article",
+            name="created_date",
+            field=models.DateTimeField(
+                auto_now_add=True,
+                default=datetime.date(2024, 11, 30),
+                verbose_name="زمان ساخته شده",
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='article',
-            name='author',
-            field=models.ForeignKey(blank=True, editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='نویسنده'),
+            model_name="article",
+            name="author",
+            field=models.ForeignKey(
+                blank=True,
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="نویسنده",
+            ),
         ),
     ]

@@ -7,28 +7,64 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='siteSettings',
+            name="siteSettings",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='نام سایت')),
-                ('site_url', models.CharField(max_length=100, verbose_name='دامنه سایت')),
-                ('about_us_text', models.TextField(verbose_name='توضیحات سایت')),
-                ('is_main_setting', models.BooleanField(default=True, verbose_name='تنظیمات اصلی')),
-                ('address', models.CharField(max_length=100, verbose_name='آدرس سایت')),
-                ('phone_number', models.CharField(blank=True, max_length=100, null=True, verbose_name='شماره ی سایت')),
-                ('fax_number', models.CharField(blank=True, max_length=100, null=True, verbose_name='فکس سایت')),
-                ('email', models.CharField(blank=True, max_length=100, null=True, verbose_name='ایمیل سایت')),
-                ('copyright_holder', models.TextField(verbose_name='متن کپی رایت')),
-                ('site_logo', models.ImageField(upload_to='images/site_setting', verbose_name='لوگو سایت')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="نام سایت")),
+                (
+                    "site_url",
+                    models.CharField(max_length=100, verbose_name="دامنه سایت"),
+                ),
+                ("about_us_text", models.TextField(verbose_name="توضیحات سایت")),
+                (
+                    "is_main_setting",
+                    models.BooleanField(default=True, verbose_name="تنظیمات اصلی"),
+                ),
+                ("address", models.CharField(max_length=100, verbose_name="آدرس سایت")),
+                (
+                    "phone_number",
+                    models.CharField(
+                        blank=True,
+                        max_length=100,
+                        null=True,
+                        verbose_name="شماره ی سایت",
+                    ),
+                ),
+                (
+                    "fax_number",
+                    models.CharField(
+                        blank=True, max_length=100, null=True, verbose_name="فکس سایت"
+                    ),
+                ),
+                (
+                    "email",
+                    models.CharField(
+                        blank=True, max_length=100, null=True, verbose_name="ایمیل سایت"
+                    ),
+                ),
+                ("copyright_holder", models.TextField(verbose_name="متن کپی رایت")),
+                (
+                    "site_logo",
+                    models.ImageField(
+                        upload_to="images/site_setting", verbose_name="لوگو سایت"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': "Site Setting's",
-                'verbose_name_plural': 'Settings',
+                "verbose_name": "Site Setting's",
+                "verbose_name_plural": "Settings",
             },
         ),
     ]

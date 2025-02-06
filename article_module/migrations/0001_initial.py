@@ -7,21 +7,34 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ArticleCategory',
+            name="ArticleCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200, verbose_name='عنوان')),
-                ('url_title', models.CharField(max_length=200, verbose_name='عنوان لینک')),
-                ('is_active', models.BooleanField(default=True, verbose_name='Is active')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200, verbose_name="عنوان")),
+                (
+                    "url_title",
+                    models.CharField(max_length=200, verbose_name="عنوان لینک"),
+                ),
+                (
+                    "is_active",
+                    models.BooleanField(default=True, verbose_name="Is active"),
+                ),
             ],
             options={
-                'verbose_name': 'Article Category',
-                'verbose_name_plural': "Articl's Categories",
+                "verbose_name": "Article Category",
+                "verbose_name_plural": "Articl's Categories",
             },
         ),
     ]
