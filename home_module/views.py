@@ -1,7 +1,10 @@
 from django.db.models import Count
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.base import TemplateView
+
+from account_module.models import User
 from product_module.models import product
 from site_module.models import siteSettings, footerLink, footerLinkBox, slider
 from utils.product_list_for_index_page import split_list
@@ -60,3 +63,36 @@ class InfoView(TemplateView):
         ).first()
         context["site_settings"] = site_settings
         return context
+
+class checkAddress(View):
+    def get(self, request):
+        user = request.user
+        context = {
+            'user': user,
+        }
+        return render(request, 'home_module/check_address.html', context)
+
+    def post(self, request):
+        new_address = request.POST.get("address")
+        if new_address:
+            user: User = User.objects.get(id=request.user.id)
+            print(new_address)
+            if user:
+                user.address = new_address
+                user.save()
+                return JsonResponse({
+                    'status': 'success',
+                    'text': 'wait for our paying complete',
+                    'button': 'ok',
+                    'icon': 'success',
+                })
+
+
+            return JsonResponse({"message": 'address does not exist'})
+
+        return JsonResponse({
+            'status': 'success',
+            'text': 'wait for our paying complete',
+            'button': 'ok',
+            'icon': 'error',
+        })

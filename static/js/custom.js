@@ -90,7 +90,7 @@ function addProductToCart(productId) {
     var count = $('#countProductOrder').val();
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8000/add-product-to-order',
+        url: '/add-product-to-order',
         data: {
             'product_id': productId,
             'count': count
@@ -150,32 +150,43 @@ function editordercount(ProductId, status, event) {
     })
 }
 
+$(document).ready(function() {
+    $("#check-address-form").submit(function(event) {
+        event.preventDefault();
 
-function addProductToCartFromHome(productId) {
-    var count = 1
-    $.ajax({
-        type: 'POST',
-        url: 'http://localhost:8000/add-product-to-order',
-        data: {
-            'product_id': productId,
-            'count': count
-        },
-        headers: {
-            'X-CSRFToken': csrftoken
-        },
-        success: function (res) {
-            if (res.status === 'success') {
-                Swal.fire({
-                    icon: res.icon,
-                    text: res.mesaage
+        let address = $("#check-addres-input").val();
+        console.log('address', address)
+
+        $.ajax({
+            url: "/check-address",
+            type: "POST",
+            data: { address: address },
+            headers: {
+                "X-CSRFToken": getCSRFToken()
+            },
+            success: function(res) {
+                if (res.status === 'success'){
+                swal.fire({
+                    text :res.text,
+                    icon :res.icon,
+                    confirmButtonText : res.button
+
                 });
-            } else {
-                Swal.fire({
-                    icon: res.icon,
-                    text: res.message
-                });
+            }},
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
             }
-        }
+        });
     });
-}
+});
 
+function getCSRFToken() {
+    let cookies = document.cookie.split('; ');
+    for (let cookie of cookies) {
+        let [name, value] = cookie.split('=');
+        if (name === 'csrftoken') {
+            return value;
+        }
+    }
+    return '';
+}

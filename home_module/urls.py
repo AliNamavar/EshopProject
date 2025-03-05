@@ -4,4 +4,5 @@ from home_module import views
 urlpatterns = [
     path("", views.HomeView.as_view(), name="index_home_module"),
     path("about-us", views.InfoView.as_view(), name="about_us"),
+    path('check-address', views.checkAddress.as_view(), name='checkAddress'),
 ]

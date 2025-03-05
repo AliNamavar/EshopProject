@@ -64,19 +64,21 @@
                             {#                                </ul>#}
 
                             {#                            </li>#}
+
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                     <li><a href="/admin/"><i class="fa fa-user"></i> ادمین</a></li>
                                 {% endif %}
                                 <li><a href="{% url 'user-dashboard' %}"><i class="fa fa-user"></i> پنل کاربری</a></li>
                                 <li><a href="/logout/"><i class="fa fa-sign-out"></i> خروج</a></li>
-                                <li><a href="{% url 'OrderView' %}"><i class="fa fa-shopping-bag"></i> سبد خرید</a></li>
+
                             {% else %}
                                 {#                            <li><a href="/register/"><i class="fas fa-user-plus"></i> ثبت نام </a></li>#}
                                 <li><a href="/register/"><i class="fas fa-user-plus"></i> ثبت نام </a></li>
 
                                 <li><a href="/login/"><i class="fa fa-sign-in"></i> ورود</a></li>
                             {% endif %}
+                            <li><a href="{% url 'OrderView' %}"><i class="fa fa-shopping-bag"></i> سبد خرید</a></li>
                         </ul>
                     </div>
                 </div>
@@ -96,9 +98,9 @@
                                    value="{{ request.GET.start_price }}">
                             <input type="hidden" name="end_price"
                                    value="{{ request.GET.end_price }}">
-{#                            {% if request.GET.page %}#}
-                            <input type="hidden" name="page"  value="{{ request.GET.page }}">
-{#                            {% endif %}#}
+                            {#                            {% if request.GET.page %}#}
+                            <input type="hidden" name="page" value="{{ request.GET.page }}">
+                            {#                            {% endif %}#}
                         </form>
                     </div>
                 </div>

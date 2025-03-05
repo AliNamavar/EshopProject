@@ -173,3 +173,6 @@ JALALI_DATE_DEFAULTS = {
         },
     },
 }
+
+
+LOGIN_URL = '/login'
