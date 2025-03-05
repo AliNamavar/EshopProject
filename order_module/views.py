@@ -1,7 +1,9 @@
 from http.cookiejar import cut_port_re
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.http import JsonResponse
 from product_module.models import product
@@ -78,7 +80,7 @@ class add_product_to_order(View):
                 }
             )
 
-
+@method_decorator(login_required, name="dispatch")
 class Order_View(View):
     def get(self, request, *args, **kwargs):
         current_order, created = Order_Model.objects.prefetch_related(

@@ -254,14 +254,14 @@
                                                     <div class="productinfo text-center"><img
                                                             src="{{ product.images.url }}" alt=""/>
                                                         <h2>{{ product.price | three_digits_currency }}</h2>
-                                                        <p>{{ product.short_description }}</p> <a onclick="addProductToCartFromHome({{ product.id }})" 
+                                                        <p>{{ product.short_description }}</p> <a onclick="addProductToCart({{ product.id }})" 
                                                                                                   class="btn btn-default add-to-cart">
                                                             <i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد </a>
                                                     </div>
                                                     <div class="product-overlay">
                                                         <div class="overlay-content">
                                                             <h2>{{ product.price | three_digits_currency }}</h2>
-                                                            <p>توضیحات کوتاه محصـول</p> <a onclick="addProductToCartFromHome({{ product.id }})"
+                                                            <p>{{ product.short_description }}</p> <a onclick="addProductToCart({{ product.id }})"
                                                                                            class="btn btn-default add-to-cart">
                                                             <i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد </a>
                                                         </div>
@@ -298,15 +298,15 @@
                                                     <div class="productinfo text-center">
                                                         <img src="{{ products.images.url }}" alt=""/>
                                                         <h2>{{ products.price | three_digits_currency}}</h2>
-                                                        <p>توضیحات کوتاه محصـول</p>
-                                                        <a onclick="addProductToCartFromHome({{ products.id }})"  class="btn btn-default add-to-cart"><i
+                                                        <p>{{ products.short_description }}</p>
+                                                        <a onclick="addProductToCart({{ products.id }})"  class="btn btn-default add-to-cart"><i
                                                                 class="fa fa-shopping-cart" ></i>افزودن به سبـد خریـد</a>
                                                     </div>
                                                     <div class="product-overlay">
                                                         <div class="overlay-content">
                                                             <h2>{{ products.price |three_digits_currency }}</h2>
-                                                            <p>توضیحات کوتاه محصـول</p>
-                                                            <a onclick="addProductToCartFromHome({{ products.id }})"  class="btn btn-default add-to-cart"><i
+                                                            <p>{{ products.short_description }}</p>
+                                                            <a onclick="addProductToCart({{ products.id }})"  class="btn btn-default add-to-cart"><i
                                                                     class="fa fa-shopping-cart" ></i>افزودن به سبـد خریـد</a>
                                                         </div>
                                                     </div>
